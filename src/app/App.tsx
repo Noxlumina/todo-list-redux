@@ -1,11 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Todo } from './pages/components/Todo';
-import { TodoList } from './pages/layouts/TodoList';
+import { TodoList } from '../features/todos/layouts/TodoList';
 import { Routes, Route, Outlet } from 'react-router-dom';
-import { DetailTodo } from './pages/layouts/DetailTodo';
-import { AddTodo } from './pages/layouts/AddTodo';
+import { DetailTodo } from '../features/todos/layouts/DetailTodo';
+import { AddTodo } from '../features/todos/layouts/AddTodo';
 
 function App() {
   return (

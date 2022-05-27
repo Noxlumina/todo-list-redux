@@ -2,10 +2,10 @@ import { Button} from '@mui/material';
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setTodoListData, deleteTodoFromList, editTodo } from '../../app/features/todoSlice';
-import { RootState } from '../../app/store';
-import { TodoModel } from '../../models/TodoModel';
-import { todoService } from '../../services/TodoService';
+import { setTodoListData, deleteTodoFromList, editTodo } from '../todoSlice';
+import { RootState } from '../../../app/store';
+import { TodoModel } from '../../../models/TodoModel';
+import { todoService } from '../../../services/TodoService';
 import { Todo } from '../components/Todo';
 
 export const TodoList = () => {
