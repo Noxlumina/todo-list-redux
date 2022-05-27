@@ -1,6 +1,6 @@
 # Projet migration vers redux
 
-##Ce projet ne respecte pas les bonnes pratiques générales react, il n'est utile que pour la démonstration d'implémentation de redux dans un projet préexistant
+Ce projet ne respecte pas les bonnes pratiques générales react, il n'est utile que pour la démonstration d'implémentation de redux dans un projet préexistant
 
 ## Installation
 
