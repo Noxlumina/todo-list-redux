@@ -33,8 +33,6 @@ const getTodoList = (): void => {
   }
 
   const saveTodo = (todo: TodoModel) => {
-    // let newTodoList = todosData.map(elem => elem.id === todo.id ? todo : elem)
-    // setTodoList(newTodoList)
     _service.put(todo).then(() => dispatch(editTodo(todo)));
   }
 
