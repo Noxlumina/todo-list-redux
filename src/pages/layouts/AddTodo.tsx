@@ -1,21 +1,38 @@
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { addTodoToList, setTodoListData } from '../../app/features/todoSlice';
+import { TodoModel } from '../../models/TodoModel';
+import { todoService } from '../../services/TodoService';
 
 const defaultValues = {
-  titleValue: "",
-  limitDateValue: "",
+    title: "",
+    limitDate: "",
+    done: false
 };
 
 export const AddTodo = () => {
-  const methods = useForm({ defaultValues: defaultValues });
-  const { handleSubmit, reset, control, setValue, register } = methods;
-  const onSubmit = (data: any) => console.log(data);
 
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-        <input defaultValue="" {...register("titleValue")} />
-        <input defaultValue="" {...register("limitDateValue")} />
+    const navigate = useNavigate()
+    const dispatch = useDispatch();
+    const _service = todoService;
 
-        <input type="submit" />
-    </form>
-  );
+    const methods = useForm({ defaultValues: defaultValues });
+    const { handleSubmit, reset, control, setValue, register } = methods;
+
+    const onSubmit = (data: any) => {
+        _service.create(data).then((res) => {
+            dispatch(setTodoListData(res))
+        })
+        navigate("/", {replace: true})
+    }
+
+    return (
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <input defaultValue="" {...register("title")} />
+            <input defaultValue="" {...register("limitDate")} />
+
+            <input type="submit" />
+        </form>
+    );
 };

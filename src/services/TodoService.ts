@@ -5,7 +5,8 @@ export class TodoService {
     apiUrl: string = "http://localhost:5000/todos"
 
     headers: Headers = new Headers({
-        "Content-Type":"application/json"
+        "Content-Type":"application/json",
+        "Accept-Type": "application/json"
     })
     
     public findAll = (): Promise<TodoModel[]> => {
@@ -17,9 +18,16 @@ export class TodoService {
     }
 
     public put = (todo: TodoModel) => {
-        console.log("service", JSON.stringify(todo))
-        return fetch(`${this.apiUrl}/${todo.id}`, {method: "put", body: JSON.stringify(todo), headers: this.headers})
+        return fetch(`${this.apiUrl}/${todo.id}`, {method: "put", body: JSON.stringify(todo), headers: this.headers}).then(data => data.json());
     }
+
+    public create = (todo: TodoModel) => {
+        return fetch(`${this.apiUrl}`, {method: "post", body: JSON.stringify(todo), headers: this.headers}).then(data => data.json());
+    }
+
+    // public findByTitle = (title: string) => {
+    //     return fetch(`${this.apiUrl}/_search?title=${title}`, {headers: this.headers})
+    // }
 }
 
 export const todoService = Object.freeze(new TodoService())
