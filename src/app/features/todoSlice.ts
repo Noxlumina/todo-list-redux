@@ -1,0 +1,19 @@
+import { TodoModel } from './../../models/TodoModel';
+import { todoService } from './../../services/TodoService';
+import { createSlice } from "@reduxjs/toolkit";
+
+export const todoSlice = createSlice({
+    name: "todos",
+    initialState: {
+        todos: [] as TodoModel[]
+    },
+
+    reducers: {
+        setTodoListData: (state, action) => {
+            state.todos = action.payload;
+        },
+        addTodoToList: (state, action) => {
+            state.todos.push(action.payload);
+        }
+    }
+})

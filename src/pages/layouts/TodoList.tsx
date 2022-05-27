@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux';
 import { TodoModel } from '../../models/TodoModel';
 import { todoService } from '../../services/TodoService';
 import { Todo } from '../components/Todo';
 
 export const TodoList = () => {
+
+  //Ajout selector
+  const todos = useSelector(selectTodos)
 
   const _service = todoService;
   const [todoList, setTodoList] = useState(new Array<TodoModel>())
