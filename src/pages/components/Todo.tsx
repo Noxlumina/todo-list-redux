@@ -28,7 +28,6 @@ export const Todo = ({ todo, deleteTodo, saveTodo }: TodoProps) => {
     }
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(event)
             setDetailTodo({
                 ...detailTodo,
                 [event.target.name]: event.target.value
@@ -36,7 +35,6 @@ export const Todo = ({ todo, deleteTodo, saveTodo }: TodoProps) => {
     };
 
     const handleSave = () => {
-        console.log(detailTodo)
         saveTodo({...detailTodo, done: false})
         setEditMode(false);
     }

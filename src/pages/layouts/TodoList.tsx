@@ -2,7 +2,7 @@ import { Button} from '@mui/material';
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setTodoListData, deleteTodoFromList } from '../../app/features/todoSlice';
+import { setTodoListData, deleteTodoFromList, editTodo } from '../../app/features/todoSlice';
 import { RootState } from '../../app/store';
 import { TodoModel } from '../../models/TodoModel';
 import { todoService } from '../../services/TodoService';
@@ -33,9 +33,9 @@ const getTodoList = (): void => {
   }
 
   const saveTodo = (todo: TodoModel) => {
-    let newTodoList = todosData.map(elem => elem.id === todo.id ? todo : elem)
+    // let newTodoList = todosData.map(elem => elem.id === todo.id ? todo : elem)
     // setTodoList(newTodoList)
-    _service.put(todo)
+    _service.put(todo).then(() => dispatch(editTodo(todo)));
   }
 
   return (
