@@ -7,7 +7,7 @@ import { Todo } from '../components/Todo';
 export const TodoList = () => {
 
   //Ajout selector
-  const todos = useSelector(selectTodos)
+  const todos = useSelector((state: IRootState) => state.todos.todos)
 
   const _service = todoService;
   const [todoList, setTodoList] = useState(new Array<TodoModel>())
