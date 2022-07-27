@@ -1,9 +1,8 @@
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { addTodoToList, setTodoListData } from '../../app/features/todoSlice';
-import { TodoModel } from '../../models/TodoModel';
-import { todoService } from '../../services/TodoService';
+import { setTodoListData } from '../todoSlice';
+import { todoService } from '../../../services/TodoService';
 
 const defaultValues = {
     title: "",
