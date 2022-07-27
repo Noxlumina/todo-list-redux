@@ -4,7 +4,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { TodoModel } from '../../models/TodoModel';
+import { TodoModel } from '../../../models/TodoModel';
 import { Input } from '@mui/material';
 import { Link } from 'react-router-dom';
 
@@ -28,7 +28,6 @@ export const Todo = ({ todo, deleteTodo, saveTodo }: TodoProps) => {
     }
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(event)
             setDetailTodo({
                 ...detailTodo,
                 [event.target.name]: event.target.value
@@ -36,7 +35,6 @@ export const Todo = ({ todo, deleteTodo, saveTodo }: TodoProps) => {
     };
 
     const handleSave = () => {
-        console.log(detailTodo)
         saveTodo({...detailTodo, done: false})
         setEditMode(false);
     }
@@ -56,8 +54,13 @@ export const Todo = ({ todo, deleteTodo, saveTodo }: TodoProps) => {
                 </> :
                 <>
                     <CardContent sx={{ display: 'flex', flexDirection: 'column' }}>
+                        <label htmlFor="">
+                            Titre
                         <Input defaultValue={detailTodo.title} name="title" onChange={handleChange}></Input>
+                        </label>
+                        <label htmlFor="">Date
                         <Input defaultValue={detailTodo.limitDate} name="limitDate" onChange={handleChange}></Input>
+                        </label>
                     </CardContent>
                     <CardActions>
                         <Button size="small" onClick={handleSave}>Sauvegarder</Button>
